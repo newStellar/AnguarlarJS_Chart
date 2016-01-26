@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../Bootstrap_Framework/css/bootstrap.min.css">
+
+  <script src="../../Bootstrap_Framework/jquery.min.js"></script>
+  <script src="../../Bootstrap_Framework/js/bootstrap.mi.js"></script>
+  <script src="../../Bootstrap_Framework/angular.min.js"></script>
+
+  <script src="Chart.min.js" charset="utf-8"></script>
+  <script src="angular-chart.js" charset="utf-8"></script>
+  <script src="script.js" charset="utf-8"></script>
+
+</head>
+
+<body ng-app ="glostar-comment-app" ng-controller ="myCtrl">
+    <div class="container" >
+        <div class="row" style = "height : 500px">
+            <div class="col-sm-12" ng-show = "showReport?false:true">
+                <canvas id="line" class="chart chart-line" chart-data="data"
+                  chart-labels="labels" chart-legend="true" chart-series="series"
+                  chart-click="onClick"
+                  style = "height : 80%">
+                </canvas>
+            </div>
+            <div class="col-sm-12" ng-show = "showReport">
+                <canvas id="pie" class="chart chart-pie"
+                  chart-data="reportData" chart-labels="labels">
+                </canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Brand</th>
+                            <th>Present Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat = "x in tableData track by $index">
+                            <td>{{x.brand}}</td>
+                            <td>{{x.status}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="pwd">Brand:</label>
+                    <select class="form-control" id="sel1">
+                        <option>Google</option>
+                        <option>Samsung</option>
+                        <option>Apple</option>
+                        <option>Xiamoi</option>
+                        <option>Microsoft</option>
+                        <option>OnePLus</option>
+                        <option>Nokia</option>
+                        <option>Sony</option>
+                        <option>HTC</option>
+                    </select>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox"> Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button></br></br>
+                <button type="submit" class="btn btn-danger" ng-click = "stopDancing()">Stop fetching Data From server</button></br></br>
+                <button type="submit" class="btn btn-success" ng-click = "startDancing()">Start fetching Data From server</button></br></br>
+                <button type="submit" class="btn btn-default" ng-click = "reportGenerate()">
+                    <span  ng-show = "showReport">Go to Voting Chart</span>
+                    <span  ng-show = "showReport?false:true">Report Generate</span>
+                </button></br></br>
+            </div>
+        </div>
+    </div>
+
+
+</body>
